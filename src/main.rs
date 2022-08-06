@@ -231,7 +231,7 @@ fn process_command(resp: &RESP) -> RESP {
         Err(e) => return RESP::Error(e.to_string()),
     };
 
-    match command.as_str() {
+    match command.to_uppercase().as_str() {
         "PING" => RESP::SimpleString("PONG".to_string()),
         "ECHO" => args[0].clone(),
         _ => RESP::Error("ERR unknown command".to_string()),
