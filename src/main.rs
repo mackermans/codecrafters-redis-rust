@@ -19,7 +19,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         spawn(async move {
             let mut buf = [0; 1024];
-            let mut store: HashMap<String, String> = HashMap::new();
+            let mut store: HashMap<String, (String, u128)> = HashMap::new();
 
             loop {
                 let num_bytes = match socket.read(&mut buf).await {
